@@ -1,0 +1,178 @@
+* {
+    font-family: Arial;
+    box-sizing: border-box;
+    font-size: 12pt;
+    outline: none;
+}
+
+*::-moz-focus-inner {
+    /* for firefox dotted outline on buttons */
+    border: 0;
+}
+
+body {
+    margin: 0;
+    color: #fff;
+    cursor: default;
+}
+
+form {
+    /* to avoid spacing between inputs */
+    display: flex;
+}
+
+textarea,
+select,
+input,
+button {
+    border-width: 0;
+    margin: 0;
+    padding: 10px;
+}
+
+input[type="submit"],
+input[type="button"],
+button {
+    cursor: pointer;
+}
+
+a,
+a:visited,
+a:hover {
+    color: #009;
+    text-decoration: none;
+}
+
+*::-webkit-scrollbar-track {
+    border-radius: 3px;
+    background-color: #fff;
+}
+
+*::-webkit-scrollbar {
+    width: 8px;
+    background-color: #fff;
+}
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: #888;
+}
+
+.map { /* 50px = height of .header */
+    position: absolute;
+    top: 50px;
+    height: calc(100% - 50px);
+    width: 100%;
+    color: #000;
+}
+
+.header {
+    width: 100%;
+    height: 50px;
+    line-height: 55px;
+    z-index: 1001;
+    position: absolute;
+    background: rgba(0,0,0,0.75);
+    text-align: center;
+    white-space: nowrap;
+}
+
+.header .logo {
+    display: inline-block;
+    text-shadow: 0 0 20px #afab35, -1px -1px 0px #000000, 1px 1px 0px #000000;
+    padding: 0 5px;
+    font: 1.75em Arial;
+    font-weight: bold;
+}
+
+.sidebar { /* 50px = height of .header */
+    position: absolute;
+    left: 0;
+    top: 50px;
+    padding: 5px 5px 5px 5px;
+    height: calc(100vh - 50px);
+    width: 25%;
+    max-height: 100vh;
+    overflow: auto;
+    min-width: 250px;
+    max-width: 80vw;
+    z-index: 1000;
+    background: rgba(0,0,0,0.35);
+    opacity: 0.85;
+    visibility: visibile;
+    transition: visibility 0.25s, opacity 0.25s ease-out;
+    /* thanks to: https://stackoverflow.com/a/6943704/2743887 */
+}
+
+.sidebar,
+.header {
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.25);
+}
+
+label[for="hamburger"] {
+    z-index: 1002;
+    display: inline-block;
+    float: left;
+    margin: 1px;
+    height: 48px;
+    width: 48px;
+    opacity: 0.85;
+    cursor: pointer;
+    background-size: initial;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' x='0px' y='0px' width='28px' height='28px' style='fill:rgb(200,200,200);' viewBox='0 0 28 28' enable-background='new 0 0 28 28' xml:space='preserve'><rect width='28' height='5' rx='2px' ry='2px'/><rect y='12' width='28' height='5' rx='2px' ry='2px'/><rect y='23' width='28' height='5' rx='2px' ry='2px'/></svg>");
+    /* thanks to: https://www.sitepoint.com/pure-css-off-screen-navigation-menu/ */
+}
+
+input[type=checkbox]#hamburger {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    /* Different ways to hide: don't know which is the best */
+    visibility: hidden;
+    display: none;
+}
+
+input[type=checkbox]#hamburger:checked + .sidebar {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#filter-location {
+    width: 100%;
+    border-radius: 15px;
+}
+
+ul#location-list {
+    margin: 10px 0 0 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#location-list li:first-of-type {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+#location-list li:last-of-type {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+#location-list li {
+    background-color: #fff;
+    border: solid #ddd 1px;
+    color: #000;
+    padding: 7px;
+}
+
+#location-list li:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}
+
+#infoWindow {
+    width: 150px;
+    text-align: center;
+    font-size: 0.8em;
+}
